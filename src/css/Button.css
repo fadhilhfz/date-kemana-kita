@@ -6,9 +6,8 @@
     z-index: 9999;
     width: 15rem;
     padding: 1rem;
-    cursor: pointer;
     background-color: #c50000;
-    border: 1px solid white;
+    border: 2px solid black;
     font-size: 1rem;
     box-sizing: border-box;
     border-radius: 5px;
@@ -17,32 +16,9 @@
     color: white;
     -webkit-box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
     -moz-box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
-    box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
+    box-shadow: 0px 0px 15px  0px rgb(48, 48, 48);
 }
 
-.btn-map-loader {
-    position: absolute;
-    left: 50%;
-    top: 90%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    width: 15rem;
-    padding: 1rem;
-    cursor: pointer;
-    background-color: #c50000;
-    border: 1px solid white;
-    font-size: 1rem;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-weight: 600;
-    text-align: center;
-    color: white;
-    cursor: not-allowed;
-    -webkit-box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
-    -moz-box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
-    box-shadow: 0px 0px 15px  0px rgba(161,161,161,1);
-}
-  
 .btn-map:hover {
     background-color: #a50404;
     transition: background-color;
@@ -58,4 +34,12 @@
   
 .loader-center{
     justify-content: center;
+}
+
+.crs-pointer{
+    cursor: pointer;
+}
+
+.crs-not-allowed{
+    cursor: not-allowed;
 }

@@ -1,26 +1,17 @@
 import React from "react";
 import "../css/Button.css";
-import { Hearts } from "react-loader-spinner";
 
-export default function Button({ isLoading, handleClick = null }) {
-  return isLoading ? (
+export default function Button({
+  isLoading = false,
+  handleClick = null,
+  children,
+}) {
+  return (
     <button
-      //   disabled={isLoading}
-      className="btn-map"
+      disabled={isLoading}
+      className={isLoading ? "btn-map crs-not-allowed" : "btn-map crs-pointer"}
       onClick={handleClick}>
-      <Hearts
-        height="19"
-        width="100"
-        color="white"
-        ariaLabel="hearts-loading"
-        wrapperStyle={{}}
-        wrapperClass="loader-center"
-        visible={true}
-      />
-    </button>
-  ) : (
-    <button className="btn-map" onClick={handleClick}>
-      Find me one !
+      {children}
     </button>
   );
 }

@@ -1,0 +1,23 @@
+.Logo {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  max-width: 300px;
+}
+
+.Logo-title {
+  font-size: 1rem;
+  color: #d82929;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.Logo-beta {
+  background-color: #2864ff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 45px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: white;
+}

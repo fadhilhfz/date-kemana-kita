@@ -1,0 +1,122 @@
+.Modal {
+  position: absolute;
+  width: 30rem;
+  height: 39rem;
+  z-index: 9999;
+  left: 3%;
+  top: 9%;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+  /* padding: 1rem; */
+  border-radius: 1rem;
+  border: 1px solid black;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(161, 161, 161, 1);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(161, 161, 161, 1);
+  box-shadow: 0px 0px 15px 0px rgb(48, 48, 48);
+}
+
+.Modal-header {
+  height: 200px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.Image-header {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.Modal-body {
+  width: 100%;
+  padding: 1.3rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+  height: 407px;
+}
+
+.Date-Category {
+  padding: 0.4rem 0.01rem;
+  max-width: 6rem;
+  text-align: center;
+  background-color: #2864ff;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.Place-Title {
+  margin: 1rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.Place-Description {
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.Date-Tips,
+.Fee-Title {
+  font-weight: 700;
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+.Date-Tips-List {
+  background-color: #ececec;
+  padding: 0.2rem 0;
+  margin: 0 0.2rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.Date-Tips-List > ul {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.Fee {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #ececec;
+  box-sizing: border-box;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.Google-Maps {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-weight: 700;
+  background-color: #1ea362;
+  margin: 1rem 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Google-Maps:hover {
+  background-color: #1a8752;
+  transition: all 0.2s ease-in;
+}
+
+.Close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  border-radius: 0px;
+  cursor: pointer;
+}

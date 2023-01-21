@@ -3,20 +3,22 @@ import Map from "./Map";
 import Button from "./Button";
 import { Hearts } from "react-loader-spinner";
 import MarkerAlert from "./MarkerAlert";
-import FadeIn from "./FadeIn";
+import Modal from "./Modal";
+// import FadeIn from "./FadeIn";
 
 export default function MapPage() {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpened, setIsModalOpened] = useState(false);
+
   const handleClick = () => {
-    setLoading((st) => !st);
-    console.log("fired");
+    setIsLoading((st) => !st);
   };
 
   return (
     <>
-      <Map />
-      <Button isLoading={loading} handleClick={handleClick}>
-        {loading ? (
+      <Map setIsModalOpened={setIsModalOpened} />
+      <Button isLoading={isLoading} handleClick={handleClick}>
+        {isLoading ? (
           <Hearts
             height="19"
             width="100"
@@ -27,12 +29,14 @@ export default function MapPage() {
             visible={true}
           />
         ) : (
-          "Find me one !"
+          "Find me one"
         )}
       </Button>
-      <FadeIn>
+      {/* <FadeIn>
         <MarkerAlert />
-      </FadeIn>
+      </FadeIn> */}
+      <MarkerAlert />
+      {isModalOpened && <Modal setIsModalOpened={setIsModalOpened} />}
     </>
   );
 }

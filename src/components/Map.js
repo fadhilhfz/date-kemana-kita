@@ -9,7 +9,7 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 
-export default function Map() {
+export default function Map({ setIsModalOpened }) {
   const datingIcon = new L.Icon({
     className: "",
     iconAnchor: [12, 25],
@@ -38,7 +38,8 @@ export default function Map() {
       zoom={10}
       zoomControl={false}
       scrollWheelZoom={true}
-      style={{ height: "100vh" }}>
+      style={{ height: "100vh" }}
+    >
       <TileLayer
         attribution=""
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
@@ -47,12 +48,9 @@ export default function Map() {
         position={[-6.175392, 106.827194]}
         icon={datingIcon}
         eventHandlers={{
-          click: () => console.log("fired"),
-        }}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+          click: () => setIsModalOpened((st) => !st),
+        }}
+      ></Marker>
       <ZoomControl position="topright" />
       <OnMapClick />
     </MapContainer>

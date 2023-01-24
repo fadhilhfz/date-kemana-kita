@@ -5,61 +5,58 @@ import moneyIcon from "../static/img/money.png";
 import closeIcon from "../static/img/close2.png";
 
 export default function Modal({ data, setIsModalOpened }) {
+  const { type, name, desc, todo, fee, latitude, longitude, imgUrl } = data;
+
   return (
-    <div className="Modal">
-      <div className="Modal-header">
-        <img
-          src="https://images.unsplash.com/photo-1635924201021-e8ae80c2bdc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=743&q=80"
-          alt="Monas"
-          className="Image-header"
-        />
-        <img
-          src={closeIcon}
-          alt="close_button"
-          className="Close"
-          style={{ width: 20, height: "auto" }}
-          onClick={() => setIsModalOpened(false)}
-        />
-      </div>
-      <div className="Modal-body">
-        <div className="Date-Category">Outdoor Date</div>
-        <div className="Place-Title">Monumen Nasional</div>
-        <div className="Place-Description">
-          Monumen Nasional atau yang disingkat dengan Monas atau Tugu Monas
-          adalah monumen peringatan setinggi 132 meter (433 kaki) yang terletak
-          tepat di tengah Lapangan Medan Merdeka, Jakarta Pusat.
-        </div>
-        <div className="Date-Tips">Things you can do</div>
-        <div className="Date-Tips-List">
-          <ul>
-            <li>Bawa alas karena Anda dapat piknik disini.</li>
-            <li>Anda dapat melihat museum yang ada di dalam Monas.</li>
-            <li>Siapkan moment selfie terbaikmu.</li>
-          </ul>
-        </div>
-        <div className="Fee-Title">Entrance fee</div>
-        <div className="Fee">
+    <>
+      <div className="Modal-blur"></div>
+      <div className="Modal">
+        <div className="Modal-header">
+          <img src={imgUrl} alt={name} className="Image-header" />
           <img
-            src={moneyIcon}
-            alt="money"
-            style={{ width: 40, height: "auto" }}
+            src={closeIcon}
+            alt="close_button"
+            className="Close"
+            style={{ width: 20, height: "auto" }}
+            onClick={() => setIsModalOpened(false)}
           />
-          Rp 20.000 / orang
         </div>
-        <a
-          href="https://www.google.com/maps?daddr=-6.175392,106.827194&dirflg=d"
-          rel="noreferrer"
-          target="_blank"
-          className="Google-Maps"
-        >
-          <div>See in Google Maps</div>
-          <img
-            src={gmapIcon}
-            alt="google map icon"
-            style={{ width: 40, height: "auto" }}
-          />
-        </a>
+        <div className="Modal-body">
+          <div className="Date-Category">{type} Date</div>
+          <div className="Place-Title">Date di {name}!</div>
+          <div className="Place-Description">{desc}</div>
+          <div className="Date-Tips">Hal Yang Bisa Kamu Lakukan</div>
+          <div className="Date-Tips-List">
+            <ul>
+              {todo.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="Fee-Title">Biaya Masuk</div>
+          <div className="Fee">
+            <img
+              src={moneyIcon}
+              alt="money"
+              style={{ width: 40, height: "auto" }}
+            />
+            Rp {fee} / orang
+          </div>
+          <a
+            href={`https://www.google.com/maps?daddr=${latitude},${longitude}&dirflg=d`}
+            rel="noreferrer"
+            target="_blank"
+            className="Google-Maps"
+          >
+            <div>Lihat di Google Maps</div>
+            <img
+              src={gmapIcon}
+              alt="google map icon"
+              style={{ width: 40, height: "auto" }}
+            />
+          </a>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

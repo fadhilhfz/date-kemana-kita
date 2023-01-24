@@ -23,7 +23,7 @@ export default function Header() {
       </h1>
       <div className="Header-carousel">
         {imagesUrl.map((url) => (
-          <div className="Header-carousel-item">
+          <div className="Header-carousel-item" key={url}>
             <img src={url} alt="a place" />
           </div>
         ))}

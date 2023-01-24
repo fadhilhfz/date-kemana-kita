@@ -3,13 +3,13 @@ import {
   MapContainer,
   TileLayer,
   Marker,
-  useMapEvent,
   ZoomControl,
-  Popup,
+  useMap,
 } from "react-leaflet";
 import L from "leaflet";
+import { useEffect, useRef } from "react";
 
-export default function Map({ setIsModalOpened }) {
+export default function Map({ lat, lon, onMarkerClick, isLoading }) {
   const datingIcon = new L.Icon({
     className: "",
     iconAnchor: [12, 25],
@@ -18,19 +18,23 @@ export default function Map({ setIsModalOpened }) {
     iconSize: [35, 35],
     iconUrl: "https://cdn-icons-png.flaticon.com/512/7852/7852220.png",
   });
+  const mapRef = useRef(null);
 
-  function OnMapClick() {
-    const map = useMapEvent("click", () => {
-      if (map.getZoom() === 18) return;
-
-      map.flyTo([-6.175392, 106.827194], 18, {
+  useEffect(() => {
+    if (!lat || !lon) return;
+    if (mapRef.current.getZoom() === 18) {
+      mapRef.current.panTo([lat, lon], 18, {
         animate: true,
-        duration: 2.5,
+        duration: 1,
       });
-      // console.log("fired");
+      return;
+    }
+
+    mapRef.current.flyTo([lat, lon], 18, {
+      animate: true,
+      duration: 1,
     });
-    return null;
-  }
+  }, [lat, lon]);
 
   return (
     <MapContainer
@@ -39,20 +43,23 @@ export default function Map({ setIsModalOpened }) {
       zoomControl={false}
       scrollWheelZoom={true}
       style={{ height: "100vh" }}
+      ref={mapRef}
     >
       <TileLayer
         attribution=""
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
       />
-      <Marker
-        position={[-6.175392, 106.827194]}
-        icon={datingIcon}
-        eventHandlers={{
-          click: () => setIsModalOpened((st) => !st),
-        }}
-      ></Marker>
+      {(lat || lon) && !isLoading && (
+        <Marker
+          position={[lat, lon]}
+          icon={datingIcon}
+          eventHandlers={{
+            click: () => onMarkerClick(),
+          }}
+        ></Marker>
+      )}
+      {/* <OnMarkerAddToMap lat={lat} lon={lon} /> */}
       <ZoomControl position="topright" />
-      <OnMapClick />
     </MapContainer>
   );
 }

@@ -4,19 +4,43 @@ import Button from "./Button";
 import { Hearts } from "react-loader-spinner";
 import MarkerAlert from "./MarkerAlert";
 import Modal from "./Modal";
-// import FadeIn from "./FadeIn";
+import { place } from "../place";
+import "../css/MapPage.css";
 
 export default function MapPage() {
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpened, setIsModalOpened] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setIsLoading((st) => !st);
+    setIsModalOpened(false);
+
+    //For development reason, assume this is hitting an endpoint somewhere.
+    const data = await new Promise((resolve) => {
+      const randomIdx = Math.floor(Math.random() * place.length);
+      setTimeout(() => {
+        resolve(place[randomIdx]);
+      }, 2000);
+    });
+
+    setIsLoading((st) => !st);
+    setData(data);
+  };
+
+  const handleMarkerClick = () => {
+    setIsModalOpened((st) => !st);
   };
 
   return (
     <>
-      <Map setIsModalOpened={setIsModalOpened} />
+      {isLoading ? <div className="Map-Blur"></div> : null}
+      <Map
+        onMarkerClick={handleMarkerClick}
+        lat={data ? data.latitude : null}
+        lon={data ? data.longitude : null}
+        isLoading={isLoading}
+      />
       <Button isLoading={isLoading} handleClick={handleClick}>
         {isLoading ? (
           <Hearts
@@ -29,14 +53,13 @@ export default function MapPage() {
             visible={true}
           />
         ) : (
-          "Find me one"
+          "Beri saya ide"
         )}
       </Button>
-      {/* <FadeIn>
-        <MarkerAlert />
-      </FadeIn> */}
-      <MarkerAlert />
-      {isModalOpened && <Modal setIsModalOpened={setIsModalOpened} />}
+      {/* <MarkerAlert /> */}
+      {isModalOpened && (
+        <Modal setIsModalOpened={setIsModalOpened} data={data} />
+      )}
     </>
   );
 }

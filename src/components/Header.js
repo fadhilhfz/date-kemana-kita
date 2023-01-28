@@ -34,7 +34,7 @@ export default function Header() {
       <div className="Header-info">** Jabodetabek only</div>
       <div className="Header-created">
         <div>
-          Created with
+          Curated with
           <span style={{ marginLeft: 14, marginRight: 14 }}>
             <img
               src={heartIcon}

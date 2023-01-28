@@ -21,7 +21,7 @@ export default function MapPage() {
       const randomIdx = Math.floor(Math.random() * place.length);
       setTimeout(() => {
         resolve(place[randomIdx]);
-      }, 2000);
+      }, 1000);
     });
 
     setIsLoading((st) => !st);

@@ -71,7 +71,7 @@ export const place = [
     latitude: -6.5722214,
     longitude: 106.8947026,
     imgUrl:
-      "https://images.unsplash.com/photo-1624154381283-eda340ee2ce1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
+      "https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2022/01/19/cadfcd5e-4589-4297-9e94-9c33923fc2a5-1642581784344-11c6d174b2ada8ada13fcad9a18a682a.jpg",
   },
   {
     type: "Outdoor",
@@ -79,8 +79,8 @@ export const place = [
     desc: "Cimory Dairyland Puncak merupakan sebuah tempat wisata keluarga di kawasan Puncak, Bogor yang berkembang dibawah naungan perusahaan yoghurt terbesar di Indonesia yaitu Cimory.",
     todo: [],
     fee: "40.000",
-    latitude: -6.597629,
-    longitude: 106.799568,
+    latitude: -6.6500882,
+    longitude: 106.9027234,
     imgUrl:
       "https://www.len-diary.com/wp-content/uploads/2022/08/cimory-dairyland.jpg",
   },

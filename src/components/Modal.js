@@ -7,6 +7,25 @@ import closeIcon from "../static/img/close2.png";
 export default function Modal({ data, setIsModalOpened }) {
   const { type, name, desc, todo, fee, latitude, longitude, imgUrl } = data;
 
+  function colorType(type) {
+    let className;
+
+    switch (type) {
+      case "Outdoor":
+        className = "DC-Outdoor";
+        break;
+      case "Indoor":
+        className = "DC-Indoor";
+        break;
+      case "Culinary":
+        className = "DC-Culinary";
+        break;
+      default:
+        className = "";
+    }
+    return className;
+  }
+
   return (
     <>
       <div className="Modal-blur"></div>
@@ -22,26 +41,35 @@ export default function Modal({ data, setIsModalOpened }) {
           />
         </div>
         <div className="Modal-body">
-          <div className="Date-Category">{type} Date</div>
-          <div className="Place-Title">Date di {name}!</div>
+          <div className={`Date-Category ${colorType(type)}`}>{type} Date</div>
+          <div className="Place-Title">Date ke {name}!</div>
           <div className="Place-Description">{desc}</div>
-          <div className="Date-Tips">Hal Yang Bisa Kamu Lakukan</div>
-          <div className="Date-Tips-List">
-            <ul>
-              {todo.map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="Fee-Title">Biaya Masuk</div>
-          <div className="Fee">
-            <img
-              src={moneyIcon}
-              alt="money"
-              style={{ width: 40, height: "auto" }}
-            />
-            Rp {fee} / orang
-          </div>
+          {todo.length !== 0 ? (
+            <>
+              <div className="Date-Tips">Hal Yang Bisa Kamu Lakukan</div>
+              <div className="Date-Tips-List">
+                <ul>
+                  {todo.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : null}
+          {fee !== "" ? (
+            <>
+              <div className="Fee-Title">Biaya Masuk</div>
+              <div className="Fee">
+                <img
+                  src={moneyIcon}
+                  alt="money"
+                  style={{ width: 40, height: "auto" }}
+                />
+                Rp {fee} / orang
+              </div>
+            </>
+          ) : null}
+
           <a
             href={`https://www.google.com/maps?daddr=${latitude},${longitude}&dirflg=d`}
             rel="noreferrer"

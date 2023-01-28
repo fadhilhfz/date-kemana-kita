@@ -40,11 +40,20 @@
   padding: 0.4rem 0.01rem;
   max-width: 6rem;
   text-align: center;
-  background-color: #2864ff;
   color: white;
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 50px;
+}
+
+.DC-Outdoor {
+  background-color: #2864ff;
+}
+.DC-Indoor {
+  background-color: #d82929;
+}
+.DC-Culinary {
+  background-color: #f78f2f;
 }
 
 .Place-Title {
@@ -130,9 +139,11 @@
     width: 100%;
     top: 0;
     left: 0;
-    height: auto;
+    height: 100vh;
     border-radius: 0;
     box-sizing: border-box;
+    overflow-y: scroll;
+    /* overflow: hidden; */
   }
 
   .Image-header {

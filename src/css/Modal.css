@@ -16,7 +16,7 @@
 }
 
 .Modal-header {
-  height: 200px;
+  height: 244px;
   overflow: hidden;
   width: 100%;
   position: relative;
@@ -33,7 +33,7 @@
   padding: 1.3rem;
   overflow-y: auto;
   box-sizing: border-box;
-  height: 407px;
+  height: 355px;
 }
 
 .Date-Category {

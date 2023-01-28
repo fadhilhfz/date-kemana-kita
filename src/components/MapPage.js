@@ -2,7 +2,6 @@ import { useState } from "react";
 import Map from "./Map";
 import Button from "./Button";
 import { Hearts } from "react-loader-spinner";
-import MarkerAlert from "./MarkerAlert";
 import Modal from "./Modal";
 import { place } from "../place";
 import "../css/MapPage.css";

@@ -4,7 +4,7 @@ import {
   TileLayer,
   Marker,
   ZoomControl,
-  useMap,
+  LayersControl,
 } from "react-leaflet";
 import L from "leaflet";
 import { useEffect, useRef } from "react";
@@ -45,10 +45,30 @@ export default function Map({ lat, lon, onMarkerClick, isLoading }) {
       style={{ height: "100vh" }}
       ref={mapRef}
     >
-      <TileLayer
-        attribution=""
-        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-      />
+      <LayersControl position="topright">
+        <LayersControl.BaseLayer name="ESRI WorldImagery" checked={true}>
+          <TileLayer
+            attribution=""
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Google Maps">
+          <TileLayer
+            url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+            subdomains={["mt0", "mt1", "mt2", "mt3"]}
+            maxZoom={20}
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Google Earth">
+          <TileLayer
+            url="https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
+            subdomains={"0123"}
+            maxZoom={20}
+            attribution='Map data &copy; <a href="https://www.google.com/maps">Google</a>'
+          />
+        </LayersControl.BaseLayer>
+      </LayersControl>
+
       {(lat || lon) && !isLoading && (
         <Marker
           position={[lat, lon]}

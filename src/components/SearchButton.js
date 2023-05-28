@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Button.css";
+import "../css/SearchButton.css";
 
 export default function Button({
   isLoading = false,
@@ -10,7 +10,8 @@ export default function Button({
     <button
       disabled={isLoading}
       className={isLoading ? "btn-map crs-not-allowed" : "btn-map crs-pointer"}
-      onClick={handleClick}>
+      onClick={handleClick}
+    >
       {children}
     </button>
   );

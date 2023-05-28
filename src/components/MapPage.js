@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Map from "./Map";
-import Button from "./Button";
+import SearchButton from "./SearchButton";
 import { Hearts } from "react-loader-spinner";
 import Modal from "./Modal";
 import { place } from "../place";
 import "../css/MapPage.css";
+import FilterButton from "./FilterButton";
 
 export default function MapPage() {
   const [data, setData] = useState(null);
@@ -40,21 +41,24 @@ export default function MapPage() {
         lon={data ? data.longitude : null}
         isLoading={isLoading}
       />
-      <Button isLoading={isLoading} handleClick={handleClick}>
-        {isLoading ? (
-          <Hearts
-            height="19"
-            width="100"
-            color="white"
-            ariaLabel="hearts-loading"
-            wrapperStyle={{}}
-            wrapperClass="loader-center"
-            visible={true}
-          />
-        ) : (
-          "Beri saya ide"
-        )}
-      </Button>
+      <div className="btn-container">
+        <SearchButton isLoading={isLoading} handleClick={handleClick}>
+          {isLoading ? (
+            <Hearts
+              height="19"
+              width="100"
+              color="white"
+              ariaLabel="hearts-loading"
+              wrapperStyle={{}}
+              wrapperClass="loader-center"
+              visible={true}
+            />
+          ) : (
+            "Beri saya ide"
+          )}
+        </SearchButton>
+        <FilterButton />
+      </div>
       {/* <MarkerAlert /> */}
       {isModalOpened && (
         <Modal setIsModalOpened={setIsModalOpened} data={data} />

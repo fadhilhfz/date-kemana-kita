@@ -1,10 +1,10 @@
 .btn-map {
-  position: absolute;
+  /* position: absolute;
   left: 50%;
   top: 90%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
-  width: 15rem;
+  z-index: 9999; */
+  width: 14rem;
   padding: 1rem;
   background-color: #c50000;
   border: 2px solid black;

@@ -9,6 +9,18 @@
   opacity: 0.5;
 }
 
+.btn-container {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 17.5rem;
+  /* background-color: beige; */
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 600px) {
   .Map-Blur {
     height: 100vh;
